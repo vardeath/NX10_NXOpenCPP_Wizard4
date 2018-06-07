@@ -1,9 +1,10 @@
 #include "my_menu.hpp"
 
-extern "C" int ufusr_ask_unload()
+extern "C" int DllExport ufusr_ask_unload()
 {
 	return (int)NXOpen::Session::LibraryUnloadOptionImmediately;
 }
+
 //Перегрузка операторов сравнения для NXString.
 bool operator==(NXString& const val1, NXString& const val2) {
 	string leftval = val1.GetText();
@@ -173,7 +174,7 @@ void renumeration_by_toggle_state(Part *workPart, string main_name, vector<CAM::
 	}
 }
 
-extern "C" void ufusr(char *param, int *retCode, int paramLen)
+extern "C" void DllExport ufusr(char *param, int *retCode, int paramLen)
 {
 	try
 	{
